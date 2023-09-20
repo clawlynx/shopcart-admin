@@ -10,7 +10,9 @@ export default function Products() {
 
   async function fetchData() {
     setIsLoading(true);
-    const response = await fetch("http://localhost:3000/api/product");
+    const response = await fetch(
+      "https://shopcart-admin.vercel.app/api/product"
+    );
     if (!response.ok) {
       throw new Error("no response");
     }

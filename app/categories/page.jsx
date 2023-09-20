@@ -16,7 +16,9 @@ export default function Categories() {
 
   async function fetchData() {
     setIsLoading(true);
-    const response = await fetch("http://localhost:3000/api/categories");
+    const response = await fetch(
+      "https://shopcart-admin.vercel.app/api/categories"
+    );
     if (!response.ok) {
       throw new Error("no response");
     }
@@ -48,7 +50,7 @@ export default function Categories() {
   }
   async function confirmDelete(deletedCategory) {
     const response = await fetch(
-      `http://localhost:3000/api/categories/${deletedCategory._id}`,
+      `https://shopcart-admin.vercel.app/api/categories/${deletedCategory._id}`,
       {
         method: "DELETE",
       }
@@ -114,13 +116,16 @@ export default function Categories() {
           ownerEmail: session?.user?.email,
         };
 
-        const res = await fetch("http://localhost:3000/api/categories", {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        const res = await fetch(
+          "https://shopcart-admin.vercel.app/api/categories",
+          {
+            method: "PUT",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
         if (res.ok) {
           console.log("ok");
           setCategoryName("");
@@ -142,13 +147,16 @@ export default function Categories() {
           property: formatedProperty,
           ownerEmail: session?.user?.email,
         };
-        const res = await fetch("http://localhost:3000/api/categories", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        const res = await fetch(
+          "https://shopcart-admin.vercel.app/api/categories",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
         if (res.ok) {
           console.log("ok");
           setCategoryName("");

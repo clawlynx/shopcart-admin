@@ -24,7 +24,9 @@ export default function EditPage() {
   const id = params.productId;
   async function fetchData() {
     setIsLoading(true);
-    const response = await fetch(`http://localhost:3000/api/product/${id}`);
+    const response = await fetch(
+      `https://shopcart-admin.vercel.app/api/product/${id}`
+    );
     if (!response.ok) {
       throw new Error("no response");
     }
@@ -60,7 +62,9 @@ export default function EditPage() {
   }
 
   async function fetchCategories() {
-    const response = await fetch("http://localhost:3000/api/categories");
+    const response = await fetch(
+      "https://shopcart-admin.vercel.app/api/categories"
+    );
     if (!response.ok) {
       throw new Error("no response");
     }
@@ -98,13 +102,16 @@ export default function EditPage() {
       ownerEmail: session?.user?.email,
     };
     try {
-      const res = await fetch(`http://localhost:3000/api/product/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        `https://shopcart-admin.vercel.app/api/product/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (res.ok) {
         console.log("ok");
         router.push("/products");

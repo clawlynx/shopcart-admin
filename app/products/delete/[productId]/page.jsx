@@ -10,7 +10,9 @@ export default function DeletePage() {
   const router = useRouter();
 
   async function fetchData() {
-    const response = await fetch(`http://localhost:3000/api/product/${id}`);
+    const response = await fetch(
+      `https://shopcart-admin.vercel.app/api/product/${id}`
+    );
     if (!response.ok) {
       throw new Error("no response");
     }
@@ -25,9 +27,12 @@ export default function DeletePage() {
     router.push("/products");
   }
   async function deleteItem() {
-    const response = await fetch(`http://localhost:3000/api/product/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://shopcart-admin.vercel.app/api/product/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     if (!response.ok) {
       throw new Error("no response");
     }

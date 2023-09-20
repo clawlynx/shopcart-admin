@@ -33,7 +33,7 @@ export default function New() {
       ownerEmail: session?.user?.email,
     };
     try {
-      const res = await fetch("http://localhost:3000/api/product", {
+      const res = await fetch("https://shopcart-admin.vercel.app/api/product", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -62,7 +62,9 @@ export default function New() {
   }
 
   async function fetchData() {
-    const response = await fetch("http://localhost:3000/api/categories");
+    const response = await fetch(
+      "https://shopcart-admin.vercel.app/api/categories"
+    );
     if (!response.ok) {
       throw new Error("no response");
     }
